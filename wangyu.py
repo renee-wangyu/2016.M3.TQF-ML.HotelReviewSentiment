@@ -1,7 +1,5 @@
-# -*- coding: utf-8 -*-
-"""
 
-"""
+
 import os
 import itertools
 import jieba
@@ -20,15 +18,15 @@ from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics import roc_curve, auc
 
-def load_from_txt(fdir, stop_words):
-    """loading data from txt 
+"""loading data from txt, cut words using jieba, get rid of Chinese separate word and words in the stop list
 
-    @type fdir: str
-    @type stop_words: set
-    @rtype: data List
-    @rtype: word_set Dict
-    """
-    
+ @type fdir: str
+ @type stop_words: set
+ @rtype: data List
+ @rtype: word_set Dict
+"""
+def load_from_txt(fdir, stop_words):
+
     data = []
     word_set = set()
     p1 = re.compile('[0-9a-zA-Z]')
@@ -47,38 +45,36 @@ def load_from_txt(fdir, stop_words):
         data.append(' '.join(content))
     return data, word_set
 
+"""write the dict into a file
 
-
+@type word_set: word dictionary
+@type fname: dictionary filename
+"""
 def write_dict(word_set, fname):
-    """write the dict into a file
-
-    @type word_set: word dictionary
-    @type fname: dictionary filename
-    """
+  
     f = open(fname,'w',encoding='utf8')
     for word in word_set:
-        #use the utf8 encode
         f.write(word+'\n')
     f.close()
-    
-def write_seg_result(data, fname):
-    """write the seg result into a file
 
-    @type data: seg data
-    @type fname: seg filename
-    """
+"""write the seg result into a file
+
+@type data: seg data
+@type fname: seg filename
+"""
+def write_seg_result(data, fname):
+   
     f = open(fname,'w',encoding='utf8')
     for line in data:
-        #use the utf8 encode
         f.write(line+'\n')
     f.close()
+"""write the result into a file, words frequency result
 
+@type data: reuslt data
+@type fname: result filename
+"""
 def write_result(result_data, fname):
-    """write the result into a file
-
-    @type data: reuslt data
-    @type fname: result filename
-    """
+  
     f = open(fname,'w',encoding='utf8')
     for d in result_data:
         s = ''
@@ -87,11 +83,12 @@ def write_result(result_data, fname):
         f.write(s+str(d[-1])+'\n')
     f.close()
 
+"""count the data into the map, calculate words frequency
+@type data: seg data
+@type word_set: word dictionary
+"""
 def word_count(data, word_set):
-    """count the data into the map
-    @type data: seg data
-    @type word_set: word dictionary
-    """
+ 
     wd = dict(zip(word_set, range(len(word_set))))
     result_data = []
     for line in data:
@@ -115,6 +112,7 @@ def get_data_result(fdir):
     print ('start to word count')    
     return data,word_set
 
+#document frequency, context, Transforming words into feature vectors
 def text_preocess():
     data = [i.strip() for i in open('seg_pos.txt',encoding='utf8')]    
     label_pos = np.ones((3000,1),dtype='int')
@@ -129,6 +127,7 @@ def text_preocess():
     labels = label
     return data.toarray(), labels.reshape((labels.shape[0],))
 
+#split train and test data
 def get_train_test_split(data, labels, model, model_name,my_test_size=0.2):
     xtrain, xtest, ytrain, ytest = train_test_split(data, labels, test_size=my_test_size)    
     model.fit(xtrain, ytrain)
@@ -136,22 +135,20 @@ def get_train_test_split(data, labels, model, model_name,my_test_size=0.2):
     print ('accuracy is:',accuracy_score(ytest, ypredict))
     cnf_matrix = confusion_matrix(ytest, ypredict)
     np.set_printoptions(precision=2)
-    # Plot normalized confusion matrix
     f = plt.figure()
     plot_confusion_matrix(cnf_matrix, classes=["negtive","positive"], normalize=True,
                           title='confusion matrix:'+model_name)
     plt.savefig(model_name+"_cm.png")
-    #plt.show()
-    #print (ytest.shape,ypredict.shape)
-    plot_roc(ytest,ypredict,model_name)
-    #plot_roc(ytest.reshape(ytest.shape[0],1), ypredict.reshape(ypredict.shape[0],1),model_name)
 
+    plot_roc(ytest,ypredict,model_name)
+ 
+# Plot ROC curve
 def plot_roc(y_test, y_score,model_name):
     fpr, tpr, thresholds = roc_curve(y_test, y_score)
     roc_auc = auc(fpr, tpr)
     print ("Area under the ROC curve : %f" % roc_auc)
 
-    # Plot ROC curve
+
     plt.clf()
     plt.plot(fpr, tpr, label='ROC curve (area = %0.2f)' % roc_auc)
     plt.plot([0, 1], [0, 1], 'k--')
@@ -161,31 +158,17 @@ def plot_roc(y_test, y_score,model_name):
     plt.ylabel('True Positive Rate')
     plt.title('Receiver operating characteristic example')
     plt.legend(loc="lower right")
-    plt.savefig(model_name+"_roc.png")
-    #plt.show()
-    '''
-    fpr, tpr, thresholds = roc_curve(y_test, y_score)
-    plt.plot(fpr, tpr, lw=1)
-    plt.plot([0, 1], [0, 1], color='navy', lw=1, linestyle='--')
-    plt.xlim([0.0, 1.0])
-    plt.ylim([0.0, 1.05])
-    plt.xlabel('False Positive Rate')
-    plt.ylabel('True Positive Rate')
-    plt.title('Receiver operating characteristic example')
-    plt.legend(loc="lower right")
-    plt.savefig(model_name+"_roc.png")
-    plt.show()
-    '''
 
 
+"""
+This function prints and plots the confusion matrix.
+Normalization can be applied by setting `normalize=True`.
+"""
 def plot_confusion_matrix(cm, classes,
                           normalize=False,
                           title='Confusion matrix',
                           cmap=plt.cm.Blues):
-    """
-    This function prints and plots the confusion matrix.
-    Normalization can be applied by setting `normalize=True`.
-    """
+ 
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
     plt.title(title)
     plt.colorbar()
@@ -234,21 +217,20 @@ def get_dt_result(data,labels):
     model = DecisionTreeClassifier()
     get_train_test_split(data, labels, model,'dt')
     model = DecisionTreeClassifier()
-    #get_valid_score(data, labels, model)
+ 
 
 def get_svm_result(data,labels):
     print ('---------svm result is:---------')
     model = SVC(kernel='linear')
     get_train_test_split(data, labels, model,'svm')
     model = SVC(kernel='linear')
-    #get_valid_score(data, labels, model)
-
+    
 def predict():
     pos_data = np.array([i.strip().split(',') for i in open('data_pos.txt')])
     m1 = np.array(pos_data,dtype='int')
     label = np.ones((3000,1),dtype='int')
     pd = np.hstack((m1,label))
-    #print(pd.shape)
+  
     neg_data = np.array([i.strip().split(',') for i in open('data_neg.txt')])
     m1 = np.array(neg_data,dtype='int')
     label = np.zeros((3000,1),dtype='int')
@@ -265,9 +247,8 @@ def predict():
     ypredict = model.predict(xtest)
     print ('accuracy is:',accuracy_score(ytest, ypredict))
 
+# main function
 if __name__ =='__main__':
-    # main function    
-    '''
     posdata,word_set_pos = get_data_result('pos')
     negdata,word_set_neg = get_data_result('neg')
     word_set = word_set_pos | word_set_neg
@@ -275,10 +256,9 @@ if __name__ =='__main__':
     write_result(result_data, 'data_pos.txt')
     result_data = word_count(negdata, word_set)
     write_result(result_data, 'data_neg.txt')
-    '''
     data,labels = text_preocess()
     get_nb_result(data,labels)
     get_dt_result(data,labels)
     get_lr_result(data,labels)
     get_svm_result(data,labels)
-    #predict()
+ 
