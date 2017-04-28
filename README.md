@@ -6,6 +6,7 @@ https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/blob/master/
 
 This project will use a data set consisting of Chinese hotel reviews from www.ctrip.com to build sentiment classifiers that classifies a review as positive or negative.
 
+
 2. Data
 
 http://www.datatang.com/data/11936
@@ -17,6 +18,7 @@ positive(3000 reviews) /negative（3000 reviews）
 (since there are too many txt. files (6000 documents, each review is a document), I only uplaod some examples:
 
 https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/tree/master/data%20example
+
 
 3. Process
 
