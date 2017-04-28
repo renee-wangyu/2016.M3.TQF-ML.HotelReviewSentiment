@@ -1,9 +1,10 @@
 # 2016.M3.TQF-ML.HotelReviewSentiment
-More detail see the 2016.M3.TQF-ML.HotelReviewSentiment/pre_wangyu.pptx
+More detail see the pre_wangyu.pptx: 
+https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/blob/master/pre_wangyu.pptx
 
 1. Project Description
 
-This project will use a data set consisting of Chinese hotel reviews from www. ctrip.com（携程） to build sentiment classifiers that classifies a review as positive or negative.
+This project will use a data set consisting of Chinese hotel reviews from www.ctrip.com to build sentiment classifiers that classifies a review as positive or negative.
 
 2. Data
 
@@ -19,7 +20,7 @@ https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/tree/master/
 
 3. Process
 
-1) Chinese text segmentation
+· Chinese text segmentation
 
 Chinese text segmentation（divide text into words) is an important question of Chinese information processing.
 Using Jieba: https://github.com/fxsjy/jieba
@@ -27,29 +28,30 @@ Using Jieba: https://github.com/fxsjy/jieba
 
 Use dynamic programming to find the most probable combination based on the word frequency: A Hidden Markov Model (HMM)-based model is used with the Viterbi algorithm.
 
-
-2) Stop-word removal
+· Stop-word removal
 
 Stop-words are simply those words that are extremely common in all sorts of texts and likely bear no (or only little) useful information that can be used to distinguish between different classes of reviews.
 
-stoplis.txt 2016.M3.TQF-ML.HotelReviewSentiment/code/stoplis.txt
+stoplis.txt: 
+https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/blob/master/code/stoplis.txt
 
 After the prcessing, I have seg_pst.txt and seg_neg.txt.
 
-2016.M3.TQF-ML.HotelReviewSentiment/resluts/seg_pos.txt
+https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/blob/master/resluts/seg_neg.txt
 
-2016.M3.TQF-ML.HotelReviewSentiment/resluts/seg_neg.txt
+https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/blob/master/resluts/seg_pos.txt
 
-3) Bag-of-words model, Transforming words into feature vectors
+· Bag-of-words model, Transforming words into feature vectors
+
 Using bag-of-words (BOW) model to represent text as numerical feature vectors. 
 
 Create a vocabulary of unique words—from the entire set of reviews dataset. I have dictionaries: 
 
-2016.M3.TQF-ML.HotelReviewSentiment/resluts/my_dict_neg.txt
+https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/blob/master/resluts/my_dict_pos.txt
 
-2016.M3.TQF-ML.HotelReviewSentiment/resluts/my_dict_pos.txt
+https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/blob/master/resluts/my_dict_neg.txt
 
-4) TFIDF (term frequency-inverse document frequency)
+· TFIDF (term frequency-inverse document frequency)
 
 term frequency-inverse document frequency (tf-idf) that can be used to downweight those frequently occurring words in the feature vectors.
 
@@ -60,14 +62,16 @@ term frequency-inverse document frequency (tf-idf) that can be used to downweigh
 
 6. Prediction results
 
+https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/tree/master/resluts
+
 7. Improvement
 
-1) Documentary frequency
+· Documentary frequency
 
 If a word only shows in 1 or 2 reviews of all 6000 reviews, I think    the word is not important and remove it.
  (documentary frequency ≥ 3)
 
-2) Context: A triple model
+· Context: A triple model
 Combine words in sequence and consider the context information
 
 8. Conclusion
@@ -77,3 +81,4 @@ Data processing/feature engineering is more important.
 To improve the accuracy, we should have larger dataset.
 
 
+Code: https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/blob/master/code/wangyu.py
