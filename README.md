@@ -11,9 +11,7 @@ This project will use a data set consisting of Chinese hotel reviews from www.ct
 
 http://www.datatang.com/data/11936
 
-ChnSentiCorp-Htl-ba-6000: balanced corpus，
-
-positive(3000 reviews) /negative（3000 reviews）
+ChnSentiCorp-Htl-ba-6000: balanced corpus，positive(3000 reviews) /negative（3000 reviews）
 
 (since there are too many txt. files (6000 documents, each review is a document), I only uplaod some examples:
 
@@ -26,10 +24,11 @@ https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/tree/master/
 · Chinese text segmentation
 
 Chinese text segmentation（divide text into words) is an important question of Chinese information processing.
+
 Using Jieba: https://github.com/fxsjy/jieba
 （please scroll to bottom of the webpage, there are some explainations in English）
 
-Use dynamic programming to find the most probable combination based on the word frequency: A Hidden Markov Model (HMM)-based model is used with the Viterbi algorithm.
+ A Hidden Markov Model (HMM)-based model is used with the Viterbi algorithm.
 
 
 · Stop-word removal
