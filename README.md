@@ -20,6 +20,7 @@ https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/tree/master/
 
 3. Process
 
+
 · Chinese text segmentation
 
 Chinese text segmentation（divide text into words) is an important question of Chinese information processing.
@@ -27,6 +28,7 @@ Using Jieba: https://github.com/fxsjy/jieba
 （please scroll to bottom of the webpage, there are some explainations in English）
 
 Use dynamic programming to find the most probable combination based on the word frequency: A Hidden Markov Model (HMM)-based model is used with the Viterbi algorithm.
+
 
 · Stop-word removal
 
@@ -41,6 +43,7 @@ https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/blob/master/
 
 https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/blob/master/resluts/seg_pos.txt
 
+
 · Bag-of-words model, Transforming words into feature vectors
 
 Using bag-of-words (BOW) model to represent text as numerical feature vectors. 
@@ -50,6 +53,7 @@ Create a vocabulary of unique words—from the entire set of reviews dataset. I 
 https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/blob/master/resluts/my_dict_pos.txt
 
 https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/blob/master/resluts/my_dict_neg.txt
+
 
 · TFIDF (term frequency-inverse document frequency)
 
@@ -66,10 +70,12 @@ https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/tree/master/
 
 7. Improvement
 
+
 · Documentary frequency
 
 If a word only shows in 1 or 2 reviews of all 6000 reviews, I think    the word is not important and remove it.
  (documentary frequency ≥ 3)
+
 
 · Context: A triple model
 Combine words in sequence and consider the context information
