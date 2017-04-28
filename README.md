@@ -14,7 +14,7 @@ ChnSentiCorp-Htl-ba-6000: balanced corpus，
 
 positive(3000 reviews) /negative（3000 reviews）
 
-(since there are too many txt. files (6000 documents, each review is a document), I only uplaod some example
+(since there are too many txt. files (6000 documents, each review is a document), I only uplaod some examples:
 
 https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/tree/master/data%20example
 
