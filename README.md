@@ -2,6 +2,14 @@
 More detail see the pre_wangyu.pptx: 
 https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/blob/master/pre_wangyu.pptx
 
+Code: https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/blob/master/code/wangyu.py
+
+(there are some problems with my anaconda for mac, after pip installing jieba package( Chinese text segmentation package), I still can not use it with spyder and jupyter. I use Pycharm to do my project, and I only upload .py document. For your convenience, I save the results(several .txt documents) and pictures after run the code, you can check it in the results folder)
+
+https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/tree/master/resluts
+
+
+
 1. Project Description
 
 This project will use a data set consisting of Chinese hotel reviews from www.ctrip.com to build sentiment classifiers that classifies a review as positive or negative.
@@ -88,8 +96,4 @@ Data processing/feature engineering is more important.
 To improve the accuracy, we should have larger dataset.
 
 
-Code: https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/blob/master/code/wangyu.py
 
-(there are some problems with my anaconda for mac, after pip installing jieba package( Chinese text segmentation package), I still can not use it with spyder and jupyter. I use Pycharm to do my project, and I only upload .py document. For your convenience, I save the results(several .txt documents) and pictures after run the code, you can check it in the results folder)
-
-https://github.com/renee-wangyu/2016.M3.TQF-ML.HotelReviewSentiment/tree/master/resluts
