@@ -1,0 +1,48 @@
+/Library/Frameworks/Python.framework/Versions/3.5/bin/python3.5 /Users/renee/Documents/Renee/Renee·PHBS/python/hotelreviewerror4/error4.py
+/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/sklearn/cross_validation.py:44: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
+  "This module will be removed in 0.20.", DeprecationWarning)
+load stop words
+load file and seg:
+Building prefix dict from /Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/jieba/dict.txt ...
+Loading model from cache /var/folders/1h/s4x2kmbs4bz3b0xfcwnvbs1r0000gp/T/jieba.cache
+Loading model cost 1.4824941158294678 seconds.
+Prefix dict has been built succesfully.
+seg over
+write the dict
+write the seg file
+start to word count
+load stop words
+load file and seg:
+seg over
+write the dict
+write the seg file
+start to word count
+(6000, 20563)
+---------naive bayes result is:---------
+accuracy is: 0.783333333333
+Normalized confusion matrix
+[[ 0.75  0.25]
+ [ 0.19  0.81]]
+Area under the ROC curve : 0.783902
+cross valid score is: 0.689353382584
+---------decision tree classifier result is:---------
+accuracy is: 0.8325
+Normalized confusion matrix
+[[ 0.81  0.19]
+ [ 0.14  0.86]]
+Area under the ROC curve : 0.832062
+---------Logistic Regression result is:---------
+accuracy is: 0.8875
+Normalized confusion matrix
+[[ 0.88  0.12]
+ [ 0.11  0.89]]
+Area under the ROC curve : 0.887587
+cross valid score is: 0.843162041047
+---------svm result is:---------
+accuracy is: 0.8625
+Normalized confusion matrix
+[[ 0.86  0.14]
+ [ 0.13  0.87]]
+Area under the ROC curve : 0.862490
+
+Process finished with exit code 0
